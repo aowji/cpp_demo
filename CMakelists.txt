@@ -1,0 +1,22 @@
+cmake_minimum_required(VERSION 3.1)
+
+project(test)
+
+set(BOOST_ROOT C:/boost_1_70_0 CACHE PATH "")
+set(Boost_USE_STATIC_LIBS ON)
+find_package(Boost COMPONENTS filesystem date_time filesystem REQUIRED)
+
+set(GLFW3_DIR C:/glfw-3.3/build/install CACHE PATH "")
+find_package(GLFW3 REQUIRED)
+
+include_directories(${Boost_INCLUDE_DIR})
+
+
+add_executable(glfw3demo glfw3demo.cpp)
+target_link_libraries(glfw3demo ${Boost_LIBRARIES})
+
+add_executable(httpdemo httpdemo.cpp)
+target_link_libraries(httpdemo ${Boost_LIBRARIES})
+
+add_executable(filereaddemo filereaddemo.cpp)
+target_link_libraries(filereaddemo ${Boost_LIBRARIES})
